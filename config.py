@@ -14,7 +14,7 @@ class Config:
     CATALOG_COURSE_PATH = "preview_course_nopop.php"
     CATALOG_COURSE_PARAMS = {"catoid": 64, "coid": 145299}
     GITHUB_API_BASE_URL = "https://api.github.com"
-    GITHUB_REPOSITORY_PATH = "repos/bpthoms/it401_project_template"
+    GITHUB_REPOSITORY_PATH = "repos/brianpthoms/brianpthoms-it401-web-intel-final-project-f26"
 
 
 class DevelopmentConfig(Config):
