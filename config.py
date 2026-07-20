@@ -10,6 +10,11 @@ class Config:
     # External API keys / service config
     API_KEY = os.environ.get("API_KEY")
     AI_SERVICE_API_KEY = os.environ.get("AI_SERVICE_API_KEY")
+    CATALOG_BASE_URL = "https://catalog.csuci.edu"
+    CATALOG_COURSE_PATH = "preview_course_nopop.php"
+    CATALOG_COURSE_PARAMS = {"catoid": 64, "coid": 145299}
+    GITHUB_API_BASE_URL = "https://api.github.com"
+    GITHUB_REPOSITORY_PATH = "repos/bpthoms/it401_project_template"
 
 
 class DevelopmentConfig(Config):

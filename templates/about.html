@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="About IT401: Web Intelligence and its approach to finding clarity in open-web information.">
+    <title>About IT401 — Web Intelligence</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="site-header">
+        <a class="brand" href="{{ url_for('index') }}" aria-label="IT401 home">
+            <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span>IT401</span>
+        </a>
+        <nav class="site-nav" aria-label="Primary navigation">
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('about') }}" aria-current="page">About</a>
+            <a href="{{ url_for('stats') }}">Stats</a>
+        </nav>
+        <a class="button button-small" href="#course">Explore the course <span aria-hidden="true">&#8599;</span></a>
+    </header>
+
+    <main>
+        <section class="about-hero section-shell">
+            <div class="hero-heading">
+                <p class="eyebrow"><span></span> IT401 · Web Intelligence</p>
+                <h1>Clarity is a<br><em>competitive edge.</em></h1>
+            </div>
+            <div class="hero-intro">
+                <p>A course about making the open web easier to understand—and its information easier to act on.</p>
+                <a class="text-link" href="#course">About the course <span aria-hidden="true">&#8595;</span></a>
+            </div>
+        </section>
+
+        <section class="statement-band" id="course">
+            <div class="section-shell statement-grid">
+                <div class="catalog-label">
+                    <p class="section-number">01 / The course</p>
+                    <p class="catalog-status{% if catalog_live %} is-live{% endif %}">
+                        <span aria-hidden="true"></span>
+                        {% if catalog_live %}Live catalog data{% else %}Catalog fallback{% endif %}
+                    </p>
+                </div>
+                <div class="statement-copy">
+                    <p class="catalog-course-title">{{ course.title }}</p>
+                    <p>{{ course.description }}</p>
+                    <dl class="course-meta">
+                        <div><dt>Units</dt><dd>{{ course.units }}</dd></div>
+                        <div><dt>Format</dt><dd>{{ course.meeting_format }}</dd></div>
+                        <div><dt>Prerequisite</dt><dd>{{ course.prerequisite }}</dd></div>
+                        <div><dt>Grading</dt><dd>{{ course.grading }}</dd></div>
+                    </dl>
+                    <a class="catalog-source" href="{{ catalog_source_url }}" target="_blank" rel="noopener">
+                        View in the {{ course.catalog }} <span aria-hidden="true">&#8599;</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="stats-section section-shell" aria-label="IT401 at a glance">
+            <div class="stat">
+                <strong>Web</strong>
+                <span>open-source discovery</span>
+            </div>
+            <div class="stat">
+                <strong>Data</strong>
+                <span>collection and analysis</span>
+            </div>
+            <div class="stat">
+                <strong>AI</strong>
+                <span>responsible augmentation</span>
+            </div>
+            <p class="stats-note">For curious minds<br>and careful researchers.</p>
+        </section>
+
+        <section class="principles-section section-shell">
+            <div class="section-heading">
+                <p class="section-number">02 / What guides us</p>
+                <h2>Course principles,<br><em>put into practice.</em></h2>
+            </div>
+            <div class="principle-list">
+                <article class="principle-card">
+                    <span>01</span>
+                    <div class="principle-icon icon-signal" aria-hidden="true"><i></i><i></i><i></i></div>
+                    <h3>Signal over noise</h3>
+                    <p>Prioritize relevance, evidence, and meaning—not volume for its own sake.</p>
+                </article>
+                <article class="principle-card featured">
+                    <span>02</span>
+                    <div class="principle-icon icon-lens" aria-hidden="true"></div>
+                    <h3>Context changes everything</h3>
+                    <p>Study every fact alongside its history, source, and surrounding information.</p>
+                </article>
+                <article class="principle-card">
+                    <span>03</span>
+                    <div class="principle-icon icon-human" aria-hidden="true"><i></i></div>
+                    <h3>Human by design</h3>
+                    <p>Use technology to sharpen human judgment, never as a reason to surrender it.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="process-section">
+            <div class="section-shell process-grid">
+                <div class="section-heading">
+                    <p class="section-number">03 / The learning loop</p>
+                    <h2>From open web<br>to <em>clear insight.</em></h2>
+                </div>
+                <ol class="process-list">
+                    <li><span>01</span><div><h3>Discover</h3><p>Begin with a focused intelligence question.</p></div></li>
+                    <li><span>02</span><div><h3>Trace</h3><p>Follow credible signals across sources and time.</p></div></li>
+                    <li><span>03</span><div><h3>Synthesize</h3><p>Turn fragmented findings into a coherent view.</p></div></li>
+                    <li><span>04</span><div><h3>Communicate</h3><p>Present clear insight with evidence and context.</p></div></li>
+                </ol>
+            </div>
+        </section>
+
+        <section class="contact-section section-shell" id="contact">
+            <p class="eyebrow"><span></span> IT401 · Web Intelligence</p>
+            <h2>Ask better questions.<br><em>Find better answers.</em></h2>
+            <a class="button button-large" href="{{ url_for('index') }}">Return to course home <span aria-hidden="true">&#8599;</span></a>
+        </section>
+    </main>
+
+    <footer class="site-footer section-shell">
+        <a class="brand" href="{{ url_for('index') }}">
+            <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span>IT401</span>
+        </a>
+        <p>Web Intelligence<br>for a complex world.</p>
+        <div class="footer-meta">
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('about') }}">About</a>
+            <a href="{{ url_for('stats') }}">Stats</a>
+            <span>&copy; 2026 IT401</span>
+        </div>
+    </footer>
+</body>
+</html>

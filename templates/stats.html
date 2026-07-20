@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Live GitHub repository statistics for the IT401 project template.">
+    <title>Repository Stats — IT401</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="stats-page">
+    <header class="site-header">
+        <a class="brand" href="{{ url_for('index') }}" aria-label="IT401 home">
+            <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span>IT401</span>
+        </a>
+        <nav class="site-nav" aria-label="Primary navigation">
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('about') }}">About</a>
+            <a href="{{ url_for('stats') }}" aria-current="page">Stats</a>
+        </nav>
+        <a class="button button-small" href="https://github.com/{{ repository.repo_name }}" target="_blank" rel="noopener">View repository <span aria-hidden="true">&#8599;</span></a>
+    </header>
+
+    <main>
+        <section class="stats-hero section-shell">
+            <div>
+                <p class="eyebrow"><span></span> GitHub API · Live repository data</p>
+                <h1>Project stats,<br><em>in the open.</em></h1>
+            </div>
+            <div class="api-pulse{% if stats_live %} is-live{% endif %}">
+                <span aria-hidden="true"></span>
+                {% if stats_live %}API connected{% else %}API unavailable{% endif %}
+            </div>
+        </section>
+
+        <section class="repository-section">
+            <div class="section-shell">
+                <div class="repo-heading">
+                    <div class="github-mark" aria-hidden="true">GH</div>
+                    <div>
+                        <p class="section-number">Repository</p>
+                        <h2>{{ repository.repo_name }}</h2>
+                    </div>
+                </div>
+
+                <dl class="repo-stats">
+                    <div>
+                        <dt>Repository name</dt>
+                        <dd>{{ repository.repo_name }}</dd>
+                    </div>
+                    <div>
+                        <dt>Stars</dt>
+                        <dd>{% if repository.stars is not none %}{{ repository.stars }}{% else %}—{% endif %}</dd>
+                    </div>
+                    <div>
+                        <dt>Primary language</dt>
+                        <dd>{{ repository.language or "—" }}</dd>
+                    </div>
+                </dl>
+
+                <div class="api-source-row">
+                    <p>Data requested from the GitHub REST API and cached by the application.</p>
+                    <a class="text-link" href="https://api.github.com/repos/bpthoms/it401_project_template" target="_blank" rel="noopener">View API response <span aria-hidden="true">&#8599;</span></a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer section-shell">
+        <a class="brand" href="{{ url_for('index') }}">
+            <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span>IT401</span>
+        </a>
+        <p>Web Intelligence<br>for a complex world.</p>
+        <div class="footer-meta">
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('about') }}">About</a>
+            <a href="{{ url_for('stats') }}">Stats</a>
+            <span>&copy; 2026 IT401</span>
+        </div>
+    </footer>
+</body>
+</html>
