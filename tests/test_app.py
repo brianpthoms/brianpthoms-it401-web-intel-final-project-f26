@@ -45,7 +45,10 @@ def test_stats(client):
         "stars": 7,
         "language": "Python",
     }
-    with patch("routes.main.fetch_github_stats", return_value=github_stats):
+    with patch(
+        "services.github_service.fetch_github_stats",
+        return_value=github_stats,
+    ):
         response = client.get("/stats")
 
     assert response.status_code == 200

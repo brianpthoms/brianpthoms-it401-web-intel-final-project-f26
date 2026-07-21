@@ -4,6 +4,7 @@ import requests
 from flask import current_app, render_template
 
 from services.api_service import ApiService
+from services import github_service
 
 
 CATALOG_SOURCE_URL = (
@@ -33,17 +34,6 @@ def fetch_catalog_course(base_url, path, catoid, coid):
         path,
         params={"catoid": catoid, "coid": coid},
     )
-
-
-@lru_cache(maxsize=8)
-def fetch_github_stats(base_url, repository_path):
-    service = ApiService(base_url, timeout=6)
-    data = service.get(repository_path)
-    return {
-        "repo_name": data.get("full_name"),
-        "stars": data.get("stargazers_count"),
-        "language": data.get("language"),
-    }
 
 
 def register_routes(app):
@@ -76,7 +66,7 @@ def register_routes(app):
     @app.route("/stats")
     def stats():
         try:
-            repository = fetch_github_stats(
+            repository = github_service.fetch_github_stats(
                 current_app.config["GITHUB_API_BASE_URL"],
                 current_app.config["GITHUB_REPOSITORY_PATH"],
             )
